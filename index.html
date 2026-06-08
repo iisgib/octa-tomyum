@@ -362,10 +362,10 @@
   /* ── PRICING CARDS ── */
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 32px;
     align-items: start;
-    max-width: 880px;
+    max-width: 640px;
     margin: 0 auto;
   }
 
@@ -413,25 +413,24 @@
 
   /* FEATURED card */
   .pricing-card.featured {
-    background: linear-gradient(135deg, rgba(111,60,255,0.12), rgba(18,9,31,0.95), rgba(165,107,255,0.08));
-    border: 1px solid rgba(111,60,255,0.4);
-    transform: scale(1.04);
-    box-shadow: 0 0 0 1px rgba(111,60,255,0.2), 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(111,60,255,0.15);
+    background: linear-gradient(135deg, rgba(111,60,255,0.14), rgba(18,9,31,0.97), rgba(165,107,255,0.1));
+    border: 1px solid rgba(111,60,255,0.5);
+    box-shadow: 0 0 0 1px rgba(111,60,255,0.25), 0 40px 100px rgba(0,0,0,0.6), 0 0 80px rgba(111,60,255,0.2);
   }
 
   .pricing-card.featured::before {
-    background: linear-gradient(90deg, transparent, rgba(165,107,255,0.8), transparent);
+    background: linear-gradient(90deg, transparent, rgba(165,107,255,0.9), transparent);
   }
 
   .pricing-card.featured::after {
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(111,60,255,0.15), transparent 70%);
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(111,60,255,0.18), transparent 70%);
     top: -80px; right: -80px;
   }
 
   .pricing-card.featured:hover {
-    transform: scale(1.04) translateY(-8px);
-    box-shadow: 0 0 0 1px rgba(111,60,255,0.4), 0 48px 120px rgba(0,0,0,0.7), 0 0 80px rgba(111,60,255,0.25);
+    transform: translateY(-10px);
+    box-shadow: 0 0 0 1px rgba(111,60,255,0.5), 0 52px 120px rgba(0,0,0,0.7), 0 0 100px rgba(111,60,255,0.3);
   }
 
   .card-tag {
@@ -885,9 +884,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
-    .pricing-grid { grid-template-columns: 1fr; max-width: 520px; }
-    .pricing-card.featured { transform: scale(1); }
-    .pricing-card.featured:hover { transform: translateY(-8px); }
+    .pricing-grid { max-width: 520px; }
     .benefits-grid { grid-template-columns: repeat(2, 1fr); }
     .visual-grid { grid-template-columns: repeat(2, 1fr); }
     .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
@@ -994,41 +991,21 @@
 <section id="packages">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-tag">Пакеты услуг</span>
-      <h2 class="section-title">Выберите формат<br>сотрудничества</h2>
-      <p class="section-desc">Два готовых решения — от стартового AI-контента до полного управления брендом в социальных сетях.</p>
+      <span class="section-tag">SMM услуги</span>
+      <h2 class="section-title">Полное SMM-сопровождение<br>вашего бренда</h2>
+      <p class="section-desc">Комплексное развитие социальных сетей — от стратегии до результата.</p>
     </div>
 
     <div class="pricing-grid">
 
-      <!-- PACKAGE 1 -->
-      <div class="pricing-card reveal reveal-delay-1">
-        <span class="card-tag">AI Content Production</span>
-        <h3 class="card-name">STARTER</h3>
-        <p class="card-desc">Для старта — готовый AI-контент без лишних затрат и сложностей.</p>
-        <div class="price-wrap">
-          <span class="price-currency">$</span>
-          <span class="price-amount">600</span>
-          <span class="price-period">/ месяц</span>
-        </div>
-        <ul class="features-list">
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>3 рекламных ролика (15–30 сек)</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>5 баннеров или каруселей</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>До 2 правок на единицу</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Форматы для Stories и лент</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Срок: 5–7 рабочих дней</li>
-        </ul>
-        <a href="#contact" class="card-btn card-btn-outline">Выбрать пакет</a>
-      </div>
-
-      <!-- PACKAGE 2 -->
-      <div class="pricing-card featured reveal reveal-delay-2">
+      <!-- PACKAGE -->
+      <div class="pricing-card featured reveal reveal-delay-1">
         <span class="card-tag">SMM Growth Management</span>
         <h3 class="card-name">SMM GROWTH</h3>
         <p class="card-desc">Полноценное развитие социальных сетей бренда с нуля до результата.</p>
         <div class="price-wrap">
           <span class="price-currency">$</span>
-          <span class="price-amount">1000</span>
+          <span class="price-amount">1250</span>
           <span class="price-period">/ месяц</span>
         </div>
         <ul class="features-list">
@@ -1038,15 +1015,17 @@
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Копирайтинг</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Дизайн публикаций</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>6 Reels</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>1 AI Reel</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>10 Stories</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>2 имиджевых поста</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>2 баннер-поста</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Настройка таргетированной рекламы</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Запуск рекламных кампаний</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Базовая оптимизация рекламы</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Ежемесячная отчетность</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Рекомендации по развитию бренда</li>
         </ul>
-        <a href="#contact" class="card-btn card-btn-filled">Выбрать пакет</a>
+        <a href="#contact" class="card-btn card-btn-filled">Начать сотрудничество</a>
       </div>
 
     </div>
@@ -1283,10 +1262,10 @@
       var cy = rect.height / 2;
       var rx = (y - cy) / cy * -5;
       var ry = (x - cx) / cx * 5;
-      featured.style.transform = 'scale(1.04) perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-8px)';
+      featured.style.transform = 'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-10px)';
     });
     featured.addEventListener('mouseleave', function() {
-      featured.style.transform = 'scale(1.04)';
+      featured.style.transform = '';
       featured.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
       setTimeout(function() { featured.style.transition = ''; }, 500);
     });
