@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCTA — Коммерческое предложение для TomYumBar Tashkent</title>
+<style>
+  :root {
+    --bg-deep: #070411;
+    --bg-mid: #0D0817;
+    --bg-surface: #12091F;
+    --violet: #6F3CFF;
+    --violet-light: #A56BFF;
+    --cream: #F2ECFF;
+    --muted: #8F86B8;
+    --glass: rgba(111, 60, 255, 0.06);
+    --glass-border: rgba(111, 60, 255, 0.18);
+    --glow: rgba(111, 60, 255, 0.35);
+    --glow-strong: rgba(165, 107, 255, 0.5);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg-deep);
+    color: var(--cream);
+    font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── ANIMATED BG ── */
+  .bg-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.18;
+    animation: orbFloat linear infinite;
+  }
+
+  .bg-orb-1 {
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, #6F3CFF, transparent 70%);
+    top: -200px; left: -200px;
+    animation-duration: 22s;
+  }
+
+  .bg-orb-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #A56BFF, transparent 70%);
+    top: 40%; right: -150px;
+    animation-duration: 30s;
+    animation-direction: reverse;
+  }
+
+  .bg-orb-3 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, #3B1D88, transparent 70%);
+    bottom: 10%; left: 30%;
+    animation-duration: 18s;
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.028;
+    pointer-events: none;
+  }
+
+  @keyframes orbFloat {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(60px, -40px) scale(1.08); }
+    66%  { transform: translate(-40px, 60px) scale(0.94); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  section { padding: 120px 0; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    background: rgba(7, 4, 17, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(111, 60, 255, 0.1);
+    transition: background 0.3s;
+  }
+
+  nav .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo img {
+    height: 36px;
+    width: 36px;
+    flex-shrink: 0;
+    object-fit: contain;
+    image-rendering: auto;
+    filter: drop-shadow(0 0 8px rgba(111,60,255,0.55));
+  }
+
+  .nav-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 100px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .nav-cta:hover {
+    background: rgba(111, 60, 255, 0.15);
+    border-color: var(--violet-light);
+    box-shadow: 0 0 20px rgba(111,60,255,0.2);
+    transform: translateY(-1px);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 160px 0 120px;
+  }
+
+  .hero-inner { max-width: 820px; margin: 0 auto; }
+
+  .hero-logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, rgba(111,60,255,0.15), rgba(165,107,255,0.08));
+    border: 1px solid rgba(111,60,255,0.25);
+    box-shadow: 0 0 40px rgba(111,60,255,0.2), 0 0 80px rgba(111,60,255,0.08);
+    margin-bottom: 40px;
+    animation: logoPulse 4s ease-in-out infinite;
+  }
+
+  .hero-logo-wrap img {
+    width: 56px;
+    height: 56px;
+    max-height: 56px;
+    object-fit: contain;
+    image-rendering: auto;
+    filter: drop-shadow(0 0 18px rgba(165,107,255,0.75)) drop-shadow(0 0 40px rgba(111,60,255,0.4));
+  }
+
+  @keyframes logoPulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(111,60,255,0.2), 0 0 80px rgba(111,60,255,0.08); }
+    50%       { box-shadow: 0 0 60px rgba(111,60,255,0.4), 0 0 120px rgba(111,60,255,0.15); }
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--violet-light);
+    background: rgba(111,60,255,0.12);
+    border: 1px solid rgba(111,60,255,0.25);
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #F2ECFF 0%, #A56BFF 50%, #6F3CFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 500;
+    color: var(--violet-light);
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-desc {
+    font-size: clamp(15px, 1.8vw, 17px);
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, #6F3CFF, #A56BFF);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(111,60,255,0.4), 0 0 0 0 rgba(111,60,255,0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #A56BFF, #6F3CFF);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(111,60,255,0.55), 0 0 0 4px rgba(111,60,255,0.15);
+  }
+
+  .btn-primary:hover::before { opacity: 1; }
+
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border-radius: 100px;
+    background: transparent;
+    color: var(--cream);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: 1px solid rgba(242,236,255,0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--violet-light);
+    background: rgba(111,60,255,0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(111,60,255,0.15);
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--violet-light);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--cream), var(--violet-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  .section-header { margin-bottom: 64px; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(111,60,255,0.3), transparent);
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  /* ── PRICING CARDS ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    position: relative;
+    border-radius: 24px;
+    padding: 40px 36px;
+    background: linear-gradient(135deg, rgba(18,9,31,0.9), rgba(13,8,23,0.95));
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(111,60,255,0.5), transparent);
+  }
+
+  .pricing-card::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(111,60,255,0.08), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: all 0.4s;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(111,60,255,0.35);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 40px rgba(111,60,255,0.1);
+  }
+
+  .pricing-card:hover::after {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+
+  /* FEATURED card */
+  .pricing-card.featured {
+    background: linear-gradient(135deg, rgba(111,60,255,0.12), rgba(18,9,31,0.95), rgba(165,107,255,0.08));
+    border: 1px solid rgba(111,60,255,0.4);
+    transform: scale(1.04);
+    box-shadow: 0 0 0 1px rgba(111,60,255,0.2), 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(111,60,255,0.15);
+  }
+
+  .pricing-card.featured::before {
+    background: linear-gradient(90deg, transparent, rgba(165,107,255,0.8), transparent);
+  }
+
+  .pricing-card.featured::after {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(111,60,255,0.15), transparent 70%);
+    top: -80px; right: -80px;
+  }
+
+  .pricing-card.featured:hover {
+    transform: scale(1.04) translateY(-8px);
+    box-shadow: 0 0 0 1px rgba(111,60,255,0.4), 0 48px 120px rgba(0,0,0,0.7), 0 0 80px rgba(111,60,255,0.25);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #6F3CFF, #A56BFF);
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(111,60,255,0.4);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .card-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--violet-light);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-name {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(111,60,255,0.15);
+  }
+
+  .price-currency {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--violet-light);
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+
+  .price-amount {
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--cream), var(--violet-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .price-period {
+    font-size: 14px;
+    color: var(--muted);
+    align-self: flex-end;
+    margin-bottom: 8px;
+  }
+
+  .features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(242,236,255,0.8);
+    line-height: 1.5;
+  }
+
+  .feature-check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(111,60,255,0.15);
+    border: 1px solid rgba(111,60,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .feature-check svg {
+    width: 10px;
+    height: 10px;
+    stroke: var(--violet-light);
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .card-btn {
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+  }
+
+  .card-btn-outline {
+    background: transparent;
+    border: 1px solid rgba(111,60,255,0.35);
+    color: var(--cream);
+  }
+
+  .card-btn-outline:hover {
+    background: rgba(111,60,255,0.1);
+    border-color: var(--violet-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(111,60,255,0.15);
+  }
+
+  .card-btn-filled {
+    background: linear-gradient(135deg, #6F3CFF, #A56BFF);
+    border: none;
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(111,60,255,0.4);
+  }
+
+  .card-btn-filled:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(111,60,255,0.55);
+  }
+
+  /* ── WHY OCTA ── */
+  .why-section { background: transparent; }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .benefit-card {
+    border-radius: 20px;
+    padding: 28px 24px;
+    background: rgba(18, 9, 31, 0.6);
+    border: 1px solid rgba(111,60,255,0.12);
+    backdrop-filter: blur(16px);
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .benefit-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(111,60,255,0.06), transparent);
+    opacity: 0;
+    transition: opacity 0.35s;
+    border-radius: inherit;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(111,60,255,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(111,60,255,0.08);
+  }
+
+  .benefit-card:hover::after { opacity: 1; }
+
+  .benefit-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(111,60,255,0.12);
+    border: 1px solid rgba(111,60,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 20px;
+    transition: all 0.3s;
+  }
+
+  .benefit-card:hover .benefit-icon {
+    background: rgba(111,60,255,0.2);
+    box-shadow: 0 0 16px rgba(111,60,255,0.2);
+  }
+
+  .benefit-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 8px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── VISUAL DIRECTION ── */
+  .visual-section {
+    background: linear-gradient(180deg, transparent, rgba(111,60,255,0.04), transparent);
+  }
+
+  .visual-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .visual-card {
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    background: rgba(13, 8, 23, 0.7);
+    border: 1px solid rgba(111,60,255,0.12);
+    backdrop-filter: blur(16px);
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    text-align: center;
+  }
+
+  .visual-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--violet), transparent);
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+
+  .visual-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(111,60,255,0.3);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(111,60,255,0.1);
+  }
+
+  .visual-card:hover::before { opacity: 1; }
+
+  .visual-emoji {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 0 12px rgba(165,107,255,0.4));
+    transition: all 0.3s;
+  }
+
+  .visual-card:hover .visual-emoji {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(165,107,255,0.7));
+  }
+
+  .visual-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+  }
+
+  .visual-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    padding: 60px 0;
+    border-top: 1px solid rgba(111,60,255,0.1);
+    border-bottom: 1px solid rgba(111,60,255,0.1);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 0 32px;
+    position: relative;
+  }
+
+  .stat-item + .stat-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(111,60,255,0.2);
+  }
+
+  .stat-number {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, #F2ECFF, #A56BFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 140px 0;
+  }
+
+  .cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(111,60,255,0.15), transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section .section-title {
+    font-size: clamp(36px, 5.5vw, 60px);
+    max-width: 700px;
+    margin: 0 auto 20px;
+  }
+
+  .cta-section .section-desc {
+    max-width: 520px;
+    margin: 0 auto 48px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 0 32px;
+    border-top: 1px solid rgba(111,60,255,0.1);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-logo img {
+    height: 28px;
+    width: 28px;
+    flex-shrink: 0;
+    object-fit: contain;
+    image-rendering: auto;
+    opacity: 0.65;
+  }
+
+  .footer-logo span {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: rgba(143,134,184,0.5);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--violet-light); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1), transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── FLOATING PARTICLES ── */
+  .particle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: rgba(111,60,255,0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: particleDrift linear infinite;
+  }
+
+  @keyframes particleDrift {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.5; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    .pricing-card.featured { transform: scale(1); }
+    .pricing-card.featured:hover { transform: translateY(-8px); }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .visual-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .stat-item::before { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 80px 0; }
+    .container { padding: 0 20px; }
+    nav .nav-inner { padding: 0 20px; }
+    .hero { padding: 120px 0 80px; }
+    .hero-title { font-size: 38px; }
+    .hero-desc { font-size: 15px; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .visual-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .btn-primary, .btn-secondary { padding: 14px 28px; font-size: 14px; }
+    .nav-badge { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .visual-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── GLOW LINE ── */
+  .glow-line {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(111,60,255,0.6) 30%, rgba(165,107,255,0.8) 50%, rgba(111,60,255,0.6) 70%, transparent 100%);
+    margin: 0;
+    box-shadow: 0 0 20px rgba(111,60,255,0.3);
+  }
+</style>
+</head>
+<body>
+
+<!-- BG CANVAS -->
+<div class="bg-canvas">
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+</div>
+<div class="noise-overlay"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="assets/logo.png" alt="OCTA" width="36" height="36" style="display:block;flex-shrink:0;width:36px;height:36px;object-fit:contain;image-rendering:auto;">
+      <span class="nav-badge">AI Content Studio</span>
+    </div>
+    <a href="#contact" class="nav-cta">Обсудить проект</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-logo-wrap reveal">
+        <img src="assets/logo.png" alt="OCTA" width="56" height="56" style="display:block;width:56px;height:56px;object-fit:contain;image-rendering:auto;">
+      </div>
+      <div class="hero-eyebrow reveal reveal-delay-1">Коммерческое предложение · 2026</div>
+      <h1 class="hero-title reveal reveal-delay-2">КОММЕРЧЕСКОЕ<br>ПРЕДЛОЖЕНИЕ</h1>
+      <p class="hero-subtitle reveal reveal-delay-3">AI Content & SMM для TomYumBar Tashkent</p>
+      <p class="hero-desc reveal reveal-delay-4">Создаем контент нового поколения, который усиливает бренд, увеличивает узнаваемость и позволяет получать рекламные материалы без затрат на традиционный продакшн.</p>
+      <div class="hero-actions reveal reveal-delay-4" style="justify-content:center;">
+        <a href="tel:+998701318048" class="btn-primary"><span>Связаться с OCTA</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-number">48–72h</span>
+        <span class="stat-label">Производство контента</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <span class="stat-number">10×</span>
+        <span class="stat-label">Быстрее классического продакшна</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <span class="stat-number">−80%</span>
+        <span class="stat-label">Снижение затрат на съемку</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Масштабирование контента</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Пакеты услуг</span>
+      <h2 class="section-title">Выберите формат<br>сотрудничества</h2>
+      <p class="section-desc">Три готовых решения — от чистого AI-продакшна до полного управления брендом в социальных сетях.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- PACKAGE 1 -->
+      <div class="pricing-card reveal reveal-delay-1">
+        <span class="card-tag">AI Content Production</span>
+        <h3 class="card-name">AI CONTENT</h3>
+        <p class="card-desc">Премиальный AI-контент для социальных сетей, рекламы и наружных носителей.</p>
+        <div class="price-wrap">
+          <span class="price-currency">$</span>
+          <span class="price-amount">1000</span>
+          <span class="price-period">/ месяц</span>
+        </div>
+        <ul class="features-list">
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>5 рекламных роликов (15–45 сек)</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>10 баннеров / каруселей</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>1 имиджевый ролик (до 60 сек)</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>VFX и анимации включены</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Stories / Reels / Feed / Shorts</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Контент-план на месяц</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Наружная реклама & LED-экраны</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Digital билборды · Indoor/Outdoor</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>До 3 правок на единицу</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Производство за 48–72 часа</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Выделенная команда под проект</li>
+        </ul>
+        <a href="#contact" class="card-btn card-btn-outline">Выбрать пакет</a>
+      </div>
+
+      <!-- PACKAGE 2 -->
+      <div class="pricing-card reveal reveal-delay-2">
+        <span class="card-tag">SMM Growth Management</span>
+        <h3 class="card-name">SMM GROWTH</h3>
+        <p class="card-desc">Полноценное развитие социальных сетей бренда с нуля до результата.</p>
+        <div class="price-wrap">
+          <span class="price-currency">$</span>
+          <span class="price-amount">1500</span>
+          <span class="price-period">/ месяц</span>
+        </div>
+        <ul class="features-list">
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Контент-стратегия</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Контент-план</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Упаковка профиля</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Анализ аудитории</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Анализ конкурентов</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Копирайтинг</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Дизайн публикаций</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>10 Reels · 15 Stories</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>2 имиджевых поста</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Подготовка рекламных материалов</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Ежемесячная отчетность</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Рекомендации по развитию бренда</li>
+        </ul>
+        <a href="#contact" class="card-btn card-btn-outline">Выбрать пакет</a>
+      </div>
+
+      <!-- PACKAGE 3 FEATURED -->
+      <div class="pricing-card featured reveal reveal-delay-3">
+        <div class="badge"><span class="badge-dot"></span>Рекомендуем</div>
+        <span class="card-tag">Most Popular</span>
+        <h3 class="card-name">COMBO OFFER</h3>
+        <p class="card-desc">Максимальная эффективность: AI-контент и SMM в одном решении.</p>
+        <div class="price-wrap">
+          <span class="price-currency">$</span>
+          <span class="price-amount">2300</span>
+          <span class="price-period">/ месяц</span>
+        </div>
+        <ul class="features-list">
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>AI Content — полный пакет</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>SMM Growth — полный пакет</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Полная визуальная система бренда</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Контент + стратегия</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Социальные сети + реклама</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Приоритетное производство</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Единый визуальный стиль</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Максимальная эффективность</li>
+        </ul>
+        <a href="#contact" class="card-btn card-btn-filled">Начать сотрудничество</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- WHY OCTA -->
+<section id="why" class="why-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Почему OCTA</span>
+      <h2 class="section-title">Технологии на службе<br>вашего бренда</h2>
+      <p class="section-desc">Восемь причин, почему рестораны выбирают OCTA для своего контента.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-title">Быстрее классического продакшна</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">💸</div>
+        <div class="benefit-title">Снижение расходов на съемки</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">🧪</div>
+        <div class="benefit-title">Быстрое тестирование рекламных гипотез</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-4">
+        <div class="benefit-icon">🍜</div>
+        <div class="benefit-title">Контент для ресторанов и HoReCa</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="benefit-icon">🚚</div>
+        <div class="benefit-title">Подходит для доставки и франшиз</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">🏙</div>
+        <div class="benefit-title">Подходит для наружной рекламы</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">📈</div>
+        <div class="benefit-title">Легко масштабируется</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-4">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-title">Адаптация под любые площадки</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- VISUAL DIRECTION -->
+<section id="visual" class="visual-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Визуальное направление</span>
+      <h2 class="section-title">Специально для<br>TomYumBar</h2>
+      <p class="section-desc">Контент, созданный под ДНК тайской уличной кухни — энергия, вкус, атмосфера.</p>
+    </div>
+    <div class="visual-grid">
+      <div class="visual-card reveal reveal-delay-1">
+        <span class="visual-emoji">🌶</span>
+        <div class="visual-title">Thai Street Food Energy</div>
+        <div class="visual-subtitle">Энергия и аутентичность</div>
+      </div>
+      <div class="visual-card reveal reveal-delay-2">
+        <span class="visual-emoji">🔥</span>
+        <div class="visual-title">Spicy Food Visuals</div>
+        <div class="visual-subtitle">Острота в каждом кадре</div>
+      </div>
+      <div class="visual-card reveal reveal-delay-3">
+        <span class="visual-emoji">🍳</span>
+        <div class="visual-title">Wok Fire</div>
+        <div class="visual-subtitle">Огонь и скорость</div>
+      </div>
+      <div class="visual-card reveal reveal-delay-4">
+        <span class="visual-emoji">💨</span>
+        <div class="visual-title">Steam & Smoke</div>
+        <div class="visual-subtitle">Текстура и атмосфера</div>
+      </div>
+      <div class="visual-card reveal reveal-delay-1">
+        <span class="visual-emoji">🌟</span>
+        <div class="visual-title">Neon Atmosphere</div>
+        <div class="visual-subtitle">Ночной Бангкок</div>
+      </div>
+      <div class="visual-card reveal reveal-delay-2">
+        <span class="visual-emoji">🍹</span>
+        <div class="visual-title">Signature Cocktails</div>
+        <div class="visual-subtitle">Авторские напитки</div>
+      </div>
+      <div class="visual-card reveal reveal-delay-3">
+        <span class="visual-emoji">🎬</span>
+        <div class="visual-title">Cinematic Close-Ups</div>
+        <div class="visual-subtitle">Кинематографичность</div>
+      </div>
+      <div class="visual-card reveal reveal-delay-4">
+        <span class="visual-emoji">✨</span>
+        <div class="visual-title">Premium Food Advertising</div>
+        <div class="visual-subtitle">Эмоции · Скорость · Аппетитность</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section id="contact" class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="reveal">
+      <span class="section-tag">Следующий шаг</span>
+      <h2 class="section-title">Готовы подготовить первый визуальный концепт для TomYumBar</h2>
+      <p class="section-desc">Покажем, как может выглядеть ваш бренд уже в ближайшие дни.</p>
+      <div style="margin-top:48px;display:flex;align-items:center;justify-content:center;">
+        <a href="tel:+998701318048" class="btn-primary"><span>Связаться с OCTA</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="assets/logo.png" alt="OCTA" width="28" height="28" style="display:block;flex-shrink:0;width:28px;height:28px;object-fit:contain;image-rendering:auto;opacity:0.65;">
+      <span>OCTA AI Content Studio</span>
+    </div>
+    <div class="footer-copy">© 2026 OCTA. Все права защищены.</div>
+    <div class="footer-links">
+      <a href="#packages">Пакеты</a>
+      <a href="#why">О нас</a>
+      <a href="#contact">Контакты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  // ── HERO ELEMENTS VISIBLE ON LOAD ──
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.hero .reveal').forEach(function(el, i) {
+      setTimeout(function() { el.classList.add('visible'); }, i * 120);
+    });
+  });
+
+  // ── NAV SCROLL EFFECT ──
+  var nav = document.querySelector('nav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(7, 4, 17, 0.85)';
+    } else {
+      nav.style.background = 'rgba(7, 4, 17, 0.6)';
+    }
+  }, { passive: true });
+
+  // ── FLOATING PARTICLES ──
+  function createParticle() {
+    var p = document.createElement('div');
+    p.className = 'particle';
+    var startX = Math.random() * window.innerWidth;
+    var startY = Math.random() * window.innerHeight;
+    var dx = (Math.random() - 0.5) * 300 + 'px';
+    var dy = -(Math.random() * 400 + 100) + 'px';
+    var dur = Math.random() * 8 + 6;
+    p.style.cssText = 'left:' + startX + 'px;top:' + startY + 'px;--dx:' + dx + ';--dy:' + dy + ';animation-duration:' + dur + 's;animation-delay:' + (Math.random() * 4) + 's;width:' + (Math.random() * 2 + 1) + 'px;height:' + (Math.random() * 2 + 1) + 'px;opacity:0;';
+    document.body.appendChild(p);
+    setTimeout(function() { if (p.parentNode) p.parentNode.removeChild(p); }, (dur + 4) * 1000);
+  }
+
+  for (var i = 0; i < 12; i++) {
+    setTimeout(createParticle, i * 400);
+  }
+  setInterval(createParticle, 1800);
+
+  // ── COUNTER ANIMATION ──
+  function animateValue(el, start, end, duration, suffix) {
+    var startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * (end - start) + start) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ── CARD TILT EFFECT ──
+  document.querySelectorAll('.pricing-card, .benefit-card, .visual-card').forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var centerX = rect.width / 2;
+      var centerY = rect.height / 2;
+      var rotateX = (y - centerY) / centerY * -6;
+      var rotateY = (x - centerX) / centerX * 6;
+      card.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+      setTimeout(function() { card.style.transition = ''; }, 500);
+    });
+    card.addEventListener('mouseenter', function() {
+      card.style.transition = 'transform 0.1s ease';
+    });
+  });
+
+  // featured card special tilt
+  var featured = document.querySelector('.pricing-card.featured');
+  if (featured) {
+    featured.addEventListener('mousemove', function(e) {
+      var rect = featured.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var cx = rect.width / 2;
+      var cy = rect.height / 2;
+      var rx = (y - cy) / cy * -5;
+      var ry = (x - cx) / cx * 5;
+      featured.style.transform = 'scale(1.04) perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-8px)';
+    });
+    featured.addEventListener('mouseleave', function() {
+      featured.style.transform = 'scale(1.04)';
+      featured.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+      setTimeout(function() { featured.style.transition = ''; }, 500);
+    });
+  }
+
+  // ── SMOOTH GLOW TRACK on hero ──
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    hero.addEventListener('mousemove', function(e) {
+      var orb = document.querySelector('.bg-orb-1');
+      if (!orb) return;
+      var rx = (e.clientX / window.innerWidth - 0.5) * 40;
+      var ry = (e.clientY / window.innerHeight - 0.5) * 40;
+      orb.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+    });
+  }
+})();
+</script>
+</body>
+</html>
