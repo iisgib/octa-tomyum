@@ -362,9 +362,11 @@
   /* ── PRICING CARDS ── */
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
     align-items: start;
+    max-width: 880px;
+    margin: 0 auto;
   }
 
   .pricing-card {
@@ -912,7 +914,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
-    .pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 520px; }
     .pricing-card.featured { transform: scale(1); }
     .pricing-card.featured:hover { transform: translateY(-8px); }
     .benefits-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1023,7 +1025,7 @@
     <div class="section-header reveal">
       <span class="section-tag">Пакеты услуг</span>
       <h2 class="section-title">Выберите формат<br>сотрудничества</h2>
-      <p class="section-desc">Три готовых решения — от чистого AI-продакшна до полного управления брендом в социальных сетях.</p>
+      <p class="section-desc">Два готовых решения — от стартового AI-контента до полного управления брендом в социальных сетях.</p>
     </div>
 
     <div class="pricing-grid">
@@ -1031,78 +1033,50 @@
       <!-- PACKAGE 1 -->
       <div class="pricing-card reveal reveal-delay-1">
         <span class="card-tag">AI Content Production</span>
-        <h3 class="card-name">AI CONTENT</h3>
-        <p class="card-desc">Премиальный AI-контент для социальных сетей, рекламы и наружных носителей.</p>
+        <h3 class="card-name">STARTER</h3>
+        <p class="card-desc">Для старта — готовый AI-контент без лишних затрат и сложностей.</p>
+        <div class="price-wrap">
+          <span class="price-currency">$</span>
+          <span class="price-amount">600</span>
+          <span class="price-period">/ месяц</span>
+        </div>
+        <ul class="features-list">
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>3 рекламных ролика (15–30 сек)</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>5 баннеров или каруселей</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>До 2 правок на единицу</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Форматы для Stories и лент</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Срок: 5–7 рабочих дней</li>
+        </ul>
+        <a href="#contact" class="card-btn card-btn-outline">Выбрать пакет</a>
+      </div>
+
+      <!-- PACKAGE 2 -->
+      <div class="pricing-card featured reveal reveal-delay-2">
+        <div class="badge"><span class="badge-dot"></span>Популярный выбор</div>
+        <span class="card-tag">SMM Growth Management</span>
+        <h3 class="card-name">SMM GROWTH</h3>
+        <p class="card-desc">Полноценное развитие социальных сетей бренда с нуля до результата.</p>
         <div class="price-wrap">
           <span class="price-currency">$</span>
           <span class="price-amount">1000</span>
           <span class="price-period">/ месяц</span>
         </div>
         <ul class="features-list">
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>5 рекламных роликов (15–45 сек)</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>10 баннеров / каруселей</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>1 имиджевый ролик (до 60 сек)</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>VFX и анимации включены</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Stories / Reels / Feed / Shorts</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Контент-план на месяц</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Наружная реклама & LED-экраны</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Digital билборды · Indoor/Outdoor</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>До 3 правок на единицу</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Производство за 48–72 часа</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Выделенная команда под проект</li>
-        </ul>
-        <a href="#contact" class="card-btn card-btn-outline">Выбрать пакет</a>
-      </div>
-
-      <!-- PACKAGE 2 -->
-      <div class="pricing-card reveal reveal-delay-2">
-        <span class="card-tag">SMM Growth Management</span>
-        <h3 class="card-name">SMM GROWTH</h3>
-        <p class="card-desc">Полноценное развитие социальных сетей бренда с нуля до результата.</p>
-        <div class="price-wrap">
-          <span class="price-currency">$</span>
-          <span class="price-amount">1500</span>
-          <span class="price-period">/ месяц</span>
-        </div>
-        <ul class="features-list">
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Контент-стратегия</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Контент-план</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Упаковка профиля</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Анализ аудитории</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Анализ конкурентов</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Копирайтинг</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Дизайн публикаций</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>10 Reels · 15 Stories</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>6 Reels</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>10 Stories</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>2 имиджевых поста</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Подготовка рекламных материалов</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Настройка таргетированной рекламы</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Запуск рекламных кампаний</li>
+          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Базовая оптимизация рекламы</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Ежемесячная отчетность</li>
           <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Рекомендации по развитию бренда</li>
         </ul>
-        <a href="#contact" class="card-btn card-btn-outline">Выбрать пакет</a>
-      </div>
-
-      <!-- PACKAGE 3 FEATURED -->
-      <div class="pricing-card featured reveal reveal-delay-3">
-        <div class="badge"><span class="badge-dot"></span>Рекомендуем</div>
-        <span class="card-tag">Most Popular</span>
-        <h3 class="card-name">COMBO OFFER</h3>
-        <p class="card-desc">Максимальная эффективность: AI-контент и SMM в одном решении.</p>
-        <div class="price-wrap">
-          <span class="price-currency">$</span>
-          <span class="price-amount">2300</span>
-          <span class="price-period">/ месяц</span>
-        </div>
-        <ul class="features-list">
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>AI Content — полный пакет</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>SMM Growth — полный пакет</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Полная визуальная система бренда</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Контент + стратегия</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Социальные сети + реклама</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Приоритетное производство</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Единый визуальный стиль</li>
-          <li><span class="feature-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Максимальная эффективность</li>
-        </ul>
-        <a href="#contact" class="card-btn card-btn-filled">Начать сотрудничество</a>
+        <a href="#contact" class="card-btn card-btn-filled">Выбрать пакет</a>
       </div>
 
     </div>
